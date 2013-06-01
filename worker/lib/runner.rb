@@ -1,7 +1,6 @@
 module HGT
 	class Runner
-      DEFAULT_DATABASE = "0.0.0.0"
-
+      DEFAULT_DATABASE = "http://localhost:5984"
 
       ##
       #
@@ -124,7 +123,7 @@ module HGT
       #
       ##
       def default_pid_file(id)
-        base = File.expand_path(File.join(File.dirname(__FILE__),'..','..','pid'))
+        base = File.expand_path(File.join(File.dirname(__FILE__),'..','pid'))
         File.join(base,"hgt.pid")
       end
 
@@ -132,7 +131,7 @@ module HGT
       #
       ##
       def default_log_file(id)
-        base = File.expand_path(File.join(File.dirname(__FILE__),'..','..','log'))
+        base = File.expand_path(File.join(File.dirname(__FILE__),'..','log'))
         File.join(base,"hgt.log")
       end
 

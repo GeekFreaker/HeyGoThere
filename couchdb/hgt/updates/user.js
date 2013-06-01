@@ -11,13 +11,27 @@ function(doc, req) {
         }
     }
 
-   doc.timestamp = new Date();
-   parsed = JSON.parse(req.body)
-   if(parsed.token){
-     doc.token = parsed.token
+
+   if (req.query.nostamp != 'yes') {
+      doc.timestamp = new Date();
    }
+
+   
+   // parsed = JSON.parse(req.body)
+   // if(parsed.token){
+   //   doc.token = parsed.token
+   // }
+
+   parsed = JSON.parse(req.body)
+   for(var attr in parsed){
+     doc[attr] = parsed[attr]
+   }
+
+
    doc.type = "user"
    doc.id = doc._id
 
    return [doc, JSON.stringify(doc)];
 }
+
+

@@ -2,14 +2,12 @@
 
 $: << File.expand_path(File.join(File.dirname(__FILE__), 'lib'))
 
-
-puts $:
-
 require 'eventmachine'
 require 'optparse'
-#require 'em-synchrony'
+require 'em-http-request'
 require 'time'
 require 'yajl'
+require 'fb_graph'
 
 
 require 'runner'

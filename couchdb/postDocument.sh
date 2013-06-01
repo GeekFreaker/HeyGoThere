@@ -1,16 +1,17 @@
+#!/bin/bash
+
 SERVER=http://heygothere.house4hack.co.za/couchdb
 SERVER=http://localhost:5984
 
-cd /home/schalk/Documents/Projects/rhok/heygothere/hgt
+cd hgt
 
 curl -X DELETE $SERVER/hgt
 couchapp push $SERVER/hgt
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
-curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
-curl -i -X POST -H 'Content-Type: application/json' -d '{"token-misspelled":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
-
-curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/1234
+#curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
+#curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
+#curl -i -X POST -H 'Content-Type: application/json' -d '{"token-misspelled":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
+#curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/1234
 
 curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"warning", "lat":-26.05, "lon":27.90, "description":"Cookie monster was here", "userid":"123","username":"schalk"}'  $SERVER/hgt/_design/hgt/_update/tag
 
