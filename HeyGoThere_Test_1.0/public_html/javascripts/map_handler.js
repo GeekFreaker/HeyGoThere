@@ -20,13 +20,28 @@ var isOpen = false;
 var markerPlaced = false;
 var markerPos = null;
 
+var kind;
 var description;
-
+var icon;
+var green_icon = new google.maps.MarkerImage("images/markers/green.png",
+                       new google.maps.Size(32, 32), new google.maps.Point(0, 0),
+                       new google.maps.Point(16, 32));
+var orange_icon = new google.maps.MarkerImage("images/markers/orange.png",
+                       new google.maps.Size(32, 32), new google.maps.Point(0, 0),
+                       new google.maps.Point(16, 32));
 
 // Place marker at a given location on the map
-function placeMarker(position, map, description) {
+function placeMarker(position, map, description, kind) {
+  
+  if (kind === 'warning') {
+    icon = orange_icon;
+  } else {
+    icon = green_icon;
+  }
+  
   var marker = new google.maps.Marker({
     position: position,
+    icon: icon,
     map: map
   });
   console.log(position);
@@ -66,7 +81,6 @@ function doOverlayOpen() {
 }
 
 function process_form_data(form) {
-  var kind;
   var radios = document.getElementsByName('commentType');
   for (var i = 0, length = radios.length; i < length; i++) {
     if (radios[i].checked) {
@@ -115,7 +129,7 @@ function doOverlayClose(form) {
   console.log("overlay closed");
   document.getElementById("panel").style.display="block";
   process_form_data(form);
-  placeMarker(markerPos, map, description);
+  placeMarker(markerPos, map, description, kind);
 }
 // if window is resized then reposition the overlay box
 $(window).bind('resize',showOverlayBox);
@@ -152,8 +166,6 @@ function initialize() {
     } else {
       markerPlaced = false;
     }
-    //doOverlayOpen();
-    //show_overlay();
   });
 }
 
