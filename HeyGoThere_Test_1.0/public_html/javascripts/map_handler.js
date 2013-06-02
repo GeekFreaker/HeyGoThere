@@ -31,7 +31,6 @@ var orange_icon = new google.maps.MarkerImage("images/markers/orange.png",
                        new google.maps.Point(16, 32));
 
 // Place marker at a given location on the map
-<<<<<<< HEAD
 function placeMarker(position, map, description, kind) {
   
   if (kind === 'warning') {
@@ -39,9 +38,6 @@ function placeMarker(position, map, description, kind) {
   } else {
     icon = green_icon;
   }
-=======
-function placeMarker(position, map, description) {
->>>>>>> 669159faf8316b7c23b26919044c0d68edb4f0c3
   
   var marker = new google.maps.Marker({
     position: position,
