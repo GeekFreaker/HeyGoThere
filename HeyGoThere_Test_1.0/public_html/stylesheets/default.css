@@ -11,12 +11,34 @@ root {
   /*border: 1px dashed blue;*/
 }
 
-#map-canvas {
-    height: 100%; width: 85% ;
-    border: 1px solid activeborder;
-    border: 1px dashed blue;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 95%;
 }
 
+#map-canvas {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.logIn {
+  position: relative;
+  bottom: 20px;
+  right: 0;
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+  height: 95%;
+}
 #header {
   background-color: #f0f0f0;
   border-top: 1px solid #eaeaea;
@@ -25,7 +47,7 @@ root {
   -moz-box-shadow: inset 0 -1px 0 #ececec;
   box-shadow: inset 0 -1px 0 #ececec;
   font-family: 'TriplexSansLight';
-  height: 70px;
+  height: 10%;
   position: relative;
   text-shadow: 1px 1px 0 #fff;
 }
