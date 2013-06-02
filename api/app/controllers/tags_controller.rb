@@ -9,6 +9,8 @@ class TagsController < ApplicationController
   def index
 
 
+#application/mixare-json 
+
   	slat = params[:slat]
   	slon = params[:slon]
   	elat = params[:elat]
@@ -44,7 +46,7 @@ class TagsController < ApplicationController
 
    # lat (latitude), lng (longitude), elevation (could be "0"), 
 
-   render json: response
+   render json: response, :content_type => 'application/mixare-json'
 
 # {"id"=>"1", "key"=>[-26.05, 27.6], 
 #   "value"=>{"_id"=>"1", "_rev"=>"1-9cec123b4bd6ab35e6eb560901935e2e", 
