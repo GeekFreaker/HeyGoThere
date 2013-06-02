@@ -1,7 +1,8 @@
 #!/bin/bash
 
 SERVER=http://heygothere.house4hack.co.za/couchdb
-SERVER=http://cont3mpt:d3ath0wl@localhost:5984
+#SERVER=http://cont3mpt:d3ath0wl@localhost:5984
+SERVER=http://localhost:5984
 
 cd hgt
 
