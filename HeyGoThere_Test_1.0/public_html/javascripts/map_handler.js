@@ -20,53 +20,11 @@ var isOpen = false;
 var markerPlaced = false;
 var markerPos = null;
 
-
-/*
-if (map !== null) {
-  // Listen to click event on the map and place a marker at the location
-  google.maps.event.addListener(map, 'click', function(e) {
-    placeMarker(e.latLng, map);
-  });
-}
-*/
-/*
-var $overlay_wrapper;
-var $overlay_tag_location;
-
-function show_overlay() {
-  if ( !$overlay_wrapper ) append_overlay();
-  $overlay_wrapper.fadeIn(700);
-}
-
-function hide_overlay() {
-  $overlay_wrapper.fadeOut(500);
-}
-
-function append_overlay() {
-  $overlay_wrapper = $('<div id="overlay"></div>').appendTo( $('BODY') );
-  $$overlay_tag_location = $('<div id="overlay-tag-location">').appendTo( $overlay_wrapper );
-  //$overlay_tag_location.
-  $overlay_tag_location.html( '<a href=#>TODO Insert HTML Form here</a>');
-}
-
-$(function() {
-  $('A.show-overlay').click( function(ev) {
-    ev.preventDefault();
-    show_overlay();
-  });
-});
-
-function attach_overlay_event() {
-  $('A.hide-overlay', $overlay_wrapper).click( function(ev) {
-    ev.preventDefault();
-    hide_overlay();
-  });
-}
-*/
+var description;
 
 
 // Place marker at a given location on the map
-function placeMarker(position, map) {
+function placeMarker(position, map, description) {
   var marker = new google.maps.Marker({
     position: position,
     map: map
@@ -107,16 +65,57 @@ function doOverlayOpen() {
 	return false;
 }
 
-function doOverlayClose() {
-	//set status to closed
-	isOpen = false;
-	$('.overlayBox').css( 'display', 'none' );
-	// now animate the background to fade out to opacity 0
-	// and then hide it after the animation is complete.
-	$('.bgCover').animate( {opacity:0}, null, null, function() { $(this).hide(); } );
-    console.log("overlay closed");
-    document.getElementById("panel").style.display="block";
-    placeMarker(markerPos, map);
+function process_form_data(form) {
+  var kind;
+  var radios = document.getElementsByName('commentType');
+  for (var i = 0, length = radios.length; i < length; i++) {
+    if (radios[i].checked) {
+        kind = radios[i].value;
+    }
+  }
+  
+  description = form.elements["comments"].value;
+  var lat = markerPos.lat();
+  var lon = markerPos.lng();
+  
+  if (userName === null) {
+    userName = 'anonymous';
+  }
+  
+  // Post data to server
+  var url = "http://localhost/couchdb/hgt/_design/hgt/_update/tag/";
+  
+  var tag_obj = { "kind": kind, 
+                  "lat":lat, 
+                  "lon":lon, 
+                  "expires":"2013-06-02T12:34:56Z",
+                  "description": description, 
+                  "username": userName};
+  var str_data = JSON.stringify(tag_obj);
+  
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: str_data,
+    success: function(response, result, request){
+      console.log(result);
+    },
+    datatype: 'json',
+    contentType: 'Application/json'
+  });
+}
+
+function doOverlayClose(form) {
+  //set status to closed
+  isOpen = false;
+  $('.overlayBox').css( 'display', 'none' );
+  // now animate the background to fade out to opacity 0
+  // and then hide it after the animation is complete.
+  $('.bgCover').animate( {opacity:0}, null, null, function() { $(this).hide(); } );
+  console.log("overlay closed");
+  document.getElementById("panel").style.display="block";
+  process_form_data(form);
+  placeMarker(markerPos, map, description);
 }
 // if window is resized then reposition the overlay box
 $(window).bind('resize',showOverlayBox);
@@ -141,6 +140,7 @@ function initialize() {
   } else {
     document.getElementById("panel").style.display="none";
   }
+  
   google.maps.event.addListener(map, 'click', function(e) {
     //placeMarker(e.latLng, map);
     markerPos = e.latLng;
@@ -151,7 +151,6 @@ function initialize() {
       document.getElementById("panel").style.display="block";
     } else {
       markerPlaced = false;
-      //ocument.getElementById("panel").style.display="none";
     }
     //doOverlayOpen();
     //show_overlay();

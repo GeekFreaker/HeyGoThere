@@ -6,6 +6,8 @@
 
 var access_token;
 var userID;
+var userName = null;
+
 //var url = "http://heygothere.house4hack.co.za/couchdb/hgt/_design/hgt/_update/user/";
 var url = "http://localhost/couchdb/hgt/_design/hgt/_update/user/";
         
@@ -67,6 +69,7 @@ function sendToServer() {
   console.log('User ID = ' + userID);
   FB.api('/me', function(response) {
     console.log('Good to see you, ' + response.name + '.');
+    userName = response.name;
   });
   
   var user_obj = { token: access_token };

@@ -92,11 +92,12 @@
           <form name="addComment" action="" method="GET">
           Enter your comment on the location: <br>
             <textarea name="comments" rows="3" cols="20"></textarea> <p>
-            <input type="radio" name="commentType" value="recommend">Recommendation
-            <input type="radio" name="commentType" value="warning">Warning<br>
-            <input type="button" name="submitComment" value="Click" onClick="doOverlayClose();">
+            <input type="radio" name="commentType" value="recommendation" >Recommendation
+            <input type="radio" name="commentType" value="warning" onfocus="this.value='';" >Warning<br>
+            <input type="button" name="submitComment" value="Click" onClick="doOverlayClose(this.form);">
           </form>
-          <!--<button id="submit" onclick="doOverlayClose();">Submit</button>-->
+          <!--<button id="submit" onclick="doOverlayClose();">Submit</button>
+          <input type="button" name="submitComment" value="Click" onClick="doOverlayClose(this.form());">-->
         </div>
         </div>
       </div>
