@@ -14,13 +14,16 @@ root {
 html, body {
   margin: 0;
   padding: 0;
-  height: 95%;
+  height: 100%;
+  width: 100%;
 }
 
 #map-canvas {
   margin: 0;
   padding: 0;
+  width: 47em;
   height: 100%;
+  display: inline-block;
 }
 
 .container {
@@ -50,4 +53,64 @@ html, body {
   height: 10%;
   position: relative;
   text-shadow: 1px 1px 0 #fff;
+}
+
+#overlay {
+  width: 100%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: url('../images/overlays/overlay.png') repeat 0 0;
+  display: none;
+  text-align: center;
+}
+
+* html overlay {
+  background: url('../images/overlays/overlay-ie6.png') repeat 0 0;
+  height: 100%;
+  position: absolute;
+}
+#overlay-tag-location {
+  margin: 10% auto 0 auto;
+  width: 350px;
+  background: #fff;
+}
+
+
+/* to try the second overlay method */
+#panel {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  margin-left: -180px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+.bgCover { background:#000; position:absolute; left:0; top:0; display:none; overflow:hidden }
+.overlayBox {
+    margin: auto;
+	border:5px solid #09F;
+	position:absolute;
+	display:none;
+	width:600px;
+	height:450px;
+	background:#fff;
+}
+.overlayContent {
+	padding:10px;
+}
+.closeLink {
+	float:right;
+	color:red;
+}
+a:hover { text-decoration:none; }
+
+h2 {
+	padding:5px;
+	margin:0;
 }
