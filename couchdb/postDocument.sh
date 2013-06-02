@@ -23,6 +23,10 @@ curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation"
 curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-25.766000, "lon":28.196940, "expires":"2013-06-02T12:34:56Z","description":"Milk almost done", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/3
 
 
+
+curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-25.7675, "lon":28.1989, "expires":"2013-06-02T12:34:56Z","description":"Fake GPS Setting", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/4
+
+
 # ----------------------------------------------------------------- Users
 curl -X GET $SERVER/hgt/_design/hgt/_view/users
 curl -X GET $SERVER/hgt/123
