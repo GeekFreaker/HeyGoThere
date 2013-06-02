@@ -6,10 +6,10 @@ class TagsController < ApplicationController
   ##
   # Return data in mixare format to display on app 
   ##
-  def index
+  def indexs
 
 
-#application/mixare-json 
+    #application/mixare-json 
 
   	slat = params[:slat]
   	slon = params[:slon]
@@ -40,31 +40,47 @@ class TagsController < ApplicationController
       lng: row["value"]["lon"].to_s,
       elevation: "0.0",
       title: title,
-      distance: "0",
+      distance: "1",
       has_detail_page: "0",
       webpage: ""
     }
    end
-
-
-            #    "id": "2821",
-            # "lat": "46.49396",
-            # "lng": "11.2088",
-            # "elevation": "1865",
-            # "title": "Gantkofel",
-            # "distance": "9.771",
-            # "has_detail_page": "0",
-            # "webpage": ""
-
    response[:status] = "OK"
    response[:num_results] = response[:results].length
-
-    #    "status": "OK",
-    # "num_results": 3,
-
    render json: response, :content_type => 'application/mixare-json'
   end
 
+
+
+
+  ################--------------------------------------------------
+
+
+#   geonames: [
+# {
+# summary: "Carlswald is a suburb of Johannesburg, South Africa. It is located in Region 2.",
+# distance: "1.3064",
+# rank: 5,
+# title: "Carlswald, Gauteng",
+# wikipediaUrl: "en.wikipedia.org/wiki/Carlswald%2C_Gauteng",
+# elevation: 1520,
+# lng: 28.103611111111114,
+# lang: "en",
+# lat: -25.982777777777777
+# },
+# {
+# summary: "Vorna Valley is a suburb of Johannesburg, South Africa. It is located in Region 2.",
+# distance: "1.9162",
+# rank: 13,
+# title: "Vorna Valley, Gauteng",
+# wikipediaUrl: "en.wikipedia.org/wiki/Vorna_Valley%2C_Gauteng",
+# elevation: 1505,
+# countryCode: "ZA",
+# lng: 28.10722,
+# feature: "city",
+# lang: "en",
+# lat: -25.99833
+# },
 
 
 
