@@ -13,10 +13,13 @@ couchapp push $SERVER/hgt
 #curl -i -X POST -H 'Content-Type: application/json' -d '{"token-misspelled":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/123
 #curl -i -X POST -H 'Content-Type: application/json' -d '{"token":"token123"}'  $SERVER/hgt/_design/hgt/_update/user/1234
 
-curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"warning", "lat":-26.05, "lon":27.90, "description":"Cookie monster was here", "userid":"123","username":"schalk"}'  $SERVER/hgt/_design/hgt/_update/tag
-curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-26.0500, "lon":27.60, "expires":"2013-06-02T12:34:56Z","description":"Lot of milk here for the rest of the weekend", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/1
-curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-26.0510, "lon":27.90, "expires":"2013-06-02T12:34:56Z","description":"Milk almost done", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/2
-curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-22.05, "lon":24.90, "expires":"2013-06-02T12:34:56Z","description":"Milk almost done", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/3
+
+# -25.765284,28.196918
+
+curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"warning", "lat":-25.765284, "lon":28.196918, "description":"Cookie monster is here", "userid":"123","username":"schalk"}'  $SERVER/hgt/_design/hgt/_update/tag
+curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-25.765270, "lon":28.197000, "expires":"2013-06-02T12:34:56Z","description":"Lot of milk here for the rest of the weekend", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/1
+curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-25.765350, "lon":28.195000, "expires":"2013-06-02T12:34:56Z","description":"Milk almost done", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/2
+curl -i -X POST -H 'Content-Type: application/json' -d '{"kind":"recommendation", "lat":-25.766000, "lon":28.196940, "expires":"2013-06-02T12:34:56Z","description":"Milk almost done", "username":"anonymous"}'  $SERVER/hgt/_design/hgt/_update/tag/3
 
 
 # ----------------------------------------------------------------- Users
