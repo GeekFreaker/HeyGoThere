@@ -54,6 +54,38 @@ function placeMarker(position, map, description, kind) {
   map.panTo(position);
 }
 
+// Function to search positions from the DB
+function searchDB() {
+  var url = "/couchdb/hgt/_design/hgt/_view/tags";
+  var str_data;
+  var json_obj;
+  
+  $.ajax({
+    type: "GET",
+    url: url,
+    success: function(data, status, jqXHR){
+      /*str_data = data;*/
+      //console.log(data);
+      json_obj = JSON.parse(data);
+      console.log(json_obj);
+      
+      for(var i = 0, len = json_obj['total_rows']; i < len; ++i) {
+        var row = json_obj['rows'][i]['value'];
+        var kind = row['kind'];
+        var desc = row['description'];
+        var lat = row['lat'];
+        var lon = row['lon'];
+        var pos = new google.maps.LatLng(lat , lon);
+        placeMarker(pos, map, desc, kind);
+        //console.log(row);
+      }
+    },
+    datatype: 'json',
+    contentType: 'Application/json'
+  });
+  
+
+}
 
 //function to display the box
 function showOverlayBox() {
@@ -86,6 +118,7 @@ function doOverlayOpen() {
 	return false;
 }
 
+
 function process_form_data(form) {
   var radios = document.getElementsByName('commentType');
   for (var i = 0, length = radios.length; i < length; i++) {
@@ -103,7 +136,7 @@ function process_form_data(form) {
   }
   
   // Post data to server
-  var url = "http://localhost/couchdb/hgt/_design/hgt/_update/tag/";
+  var url = "/couchdb/hgt/_design/hgt/_update/tag/";
   
   var tag_obj = { "kind": kind, 
                   "lat":lat, 
@@ -158,6 +191,7 @@ function initialize() {
   if (markerPlaced === true) {
     document.getElementById("panel").style.display="block";
   } else {
+    searchDB();
     document.getElementById("panel").style.display="none";
   }
   

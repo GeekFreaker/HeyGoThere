@@ -9,7 +9,7 @@ var userID;
 var userName = null;
 
 //var url = "http://heygothere.house4hack.co.za/couchdb/hgt/_design/hgt/_update/user/";
-var url = "http://localhost/couchdb/hgt/_design/hgt/_update/user/";
+var url = "/couchdb/hgt/_design/hgt/_update/user/";
         
 window.fbAsyncInit = function() {ReferenceError
 FB.init({
