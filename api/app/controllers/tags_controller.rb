@@ -39,9 +39,22 @@ class TagsController < ApplicationController
       lat: row["value"]["lat"].to_s,
       lng: row["value"]["lon"].to_s,
       elevation: "0.0",
-      title: title
+      title: title,
+      distance: "0",
+      has_detail_page: "0",
+      webpage: ""
     }
    end
+
+
+            #    "id": "2821",
+            # "lat": "46.49396",
+            # "lng": "11.2088",
+            # "elevation": "1865",
+            # "title": "Gantkofel",
+            # "distance": "9.771",
+            # "has_detail_page": "0",
+            # "webpage": ""
 
    response[:status] = "OK"
    response[:num_results] = response[:results].length
