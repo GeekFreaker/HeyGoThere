@@ -25,10 +25,17 @@ var description;
 
 // Place marker at a given location on the map
 function placeMarker(position, map, description) {
+  
   var marker = new google.maps.Marker({
     position: position,
     map: map
   });
+  
+   var infowindow = new google.maps.InfoWindow({
+      content: description
+  });
+ 
+  makeInfoWindowEvent(map, infowindow, marker);
   console.log(position);
   map.panTo(position);
 }
@@ -154,6 +161,11 @@ function initialize() {
     }
     //doOverlayOpen();
     //show_overlay();
+  });
+}
+function makeInfoWindowEvent(map, infowindow, marker) {
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map, marker);
   });
 }
 
