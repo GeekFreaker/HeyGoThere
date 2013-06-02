@@ -36,9 +36,9 @@ class TagsController < ApplicationController
 
     response[:results] << {
       id: row["id"],
-      lat: row["value"]["lat"].to_f,
-      lng: row["value"]["lon"].to_f,
-      elevation: 0.0,
+      lat: row["value"]["lat"].to_s,
+      lng: row["value"]["lon"].to_s,
+      elevation: "0.0",
       title: title
     }
    end
